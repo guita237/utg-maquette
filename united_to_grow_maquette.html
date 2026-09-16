@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>United to Grow, maquette de l'app</title>
+<meta name="description" content="Maquette interactive de l'application de l'association United to Grow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16241c; --green:#0e6b45; --green-dark:#0a5236; --green-soft:#e2f0e7;
+  --sun:#f2b33d; --sun-soft:#fdf1d6; --sun-ink:#6b4a05;
+  --red:#b42318; --red-soft:#fde8e6;
+  --paper:#eef2ee; --card:#ffffff; --line:#d9e1da; --muted:#5b6a61; --faint:#8a978f;
+  --display:"Bricolage Grotesque", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.ic{width:1em;height:1em;vertical-align:-0.15em;flex:none}
+
+/* ---------- Page de présentation (grand écran) ---------- */
+.stage{min-height:100%;display:grid;grid-template-columns:minmax(300px,420px) auto;gap:56px;justify-content:center;align-items:center;padding:40px 32px}
+.intro h1{font-family:var(--display);font-weight:700;font-size:44px;line-height:1.02;letter-spacing:-0.02em;margin:18px 0 14px}
+.intro p{font-size:16px;line-height:1.55;color:var(--muted);margin:0 0 22px;max-width:36ch}
+.mark{width:52px;height:52px;border-radius:14px;background:var(--green);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-0.02em}
+.group{margin-bottom:14px}
+.group h2{font-size:13px;font-weight:700;color:var(--muted);margin:0 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-size:14px}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.role-note{margin-top:18px;padding:14px 16px;border-left:4px solid var(--sun);background:var(--card);border-radius:0 12px 12px 0;font-size:15px;line-height:1.5}
+.role-note strong{font-family:var(--display);font-weight:700;display:block;margin-bottom:2px}
+.fine{font-size:13px;color:var(--faint);margin-top:18px}
+
+.phone{width:375px;height:780px;background:var(--paper);border:10px solid var(--ink);border-radius:46px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 60px -30px rgba(22,36,28,.45)}
+
+/* ---------- App ---------- */
+.app{display:flex;flex-direction:column;height:100%;min-height:0}
+.top{padding:16px 16px 10px;display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--paper)}
+.top .assoc{font-size:12px;color:var(--muted);margin:0}
+.top .hi{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-0.01em;margin:0;line-height:1.1}
+.rolebtn{display:inline-flex;align-items:center;gap:4px;margin-top:4px;border:0;background:var(--green-soft);color:var(--green-dark);font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+.top-actions{display:flex;align-items:center;gap:12px;font-size:22px;color:var(--muted)}
+.avatar{width:36px;height:36px;border-radius:50%;border:0;background:var(--green);color:#fff;font-size:13px;font-weight:700}
+.screen{flex:1;overflow-y:auto;padding:4px 12px 16px;min-height:0}
+.nav{display:flex;border-top:1px solid var(--line);background:var(--card);padding-bottom:env(safe-area-inset-bottom)}
+.tab{flex:1;border:0;background:none;padding:9px 0 8px;font-size:11px;color:var(--faint);display:flex;flex-direction:column;align-items:center;gap:2px}
+.tab .ic{font-size:22px}
+.tab[aria-current="page"]{color:var(--green);font-weight:700}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.h{font-family:var(--display);font-weight:700;font-size:15px;margin:0 0 6px;display:flex;align-items:center;gap:6px}
+.sub{font-size:12px;color:var(--muted);margin:0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px;padding:8px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.card .h + .row, .card .sub + .row{border-top:1px solid var(--line)}
+.strong{font-weight:700;text-align:right}
+.pill{font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.p-ok{background:var(--green-soft);color:var(--green-dark)}
+.p-warn{background:var(--sun-soft);color:var(--sun-ink)}
+.p-bad{background:var(--red-soft);color:var(--red)}
+.p-mute{background:#edf0ee;color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.btn{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:7px 11px;font-size:13px}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fff;font-weight:700}
+.btn.full{width:100%}
+.btn.danger{color:var(--red)}
+.bar{height:6px;border-radius:3px;background:#e7ece8;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--green)}
+
+.rule{background:var(--sun-soft);border:0;border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.rule .sub{color:var(--sun-ink);display:flex;align-items:center;gap:5px}
+.rule p.t{margin:5px 0 0;font-size:15px;line-height:1.4;color:#3b2a03}
+.pause{background:var(--sun-soft);color:#3b2a03;border-radius:16px;padding:12px 14px;margin-bottom:10px;font-size:14px;line-height:1.4;display:flex;gap:8px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px}
+.stat b{display:block;font-family:var(--display);font-size:18px;margin:2px 0}
+.tools{border:2px solid var(--green);background:var(--card);border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.tools .h{color:var(--green-dark)}
+
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:2px;text-align:center;font-size:12px}
+.cal .d{padding:5px 0;border-radius:8px}
+.cal .today{background:var(--green);color:#fff;font-weight:700}
+.dot{display:block;width:5px;height:5px;border-radius:50%;margin:2px auto 0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 8px;text-align:center;font-size:14px}
+.tile .ic{font-size:26px;color:var(--green);display:block;margin:0 auto 6px}
+.thumb{height:64px;border-radius:10px;background:linear-gradient(135deg,var(--green-soft),var(--sun-soft));display:grid;place-items:center;color:var(--green);font-size:24px}
+.drop{border:2px dashed var(--line);border-radius:16px;padding:16px;text-align:center;margin-bottom:10px;background:var(--card)}
+.field{display:block;font-size:12px;color:var(--muted);margin:8px 0 3px}
+.input{width:100%;height:38px;border:1px solid var(--line);border-radius:10px;padding:0 10px;font-size:14px;background:#fbfcfb}
+.seg{display:flex;gap:6px}
+.seg .btn{flex:1}
+.seg .btn[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.back{border:0;background:none;color:var(--muted);font-size:14px;padding:4px 0 8px;display:flex;align-items:center;gap:4px}
+.step{display:flex;align-items:center;gap:8px;font-size:14px;padding:6px 0}
+
+.bday{background:var(--green);color:#fff;border-radius:16px;padding:14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
+.bday .ic{font-size:30px;color:var(--sun);margin-top:2px}
+.bday h3{font-family:var(--display);font-size:18px;margin:0;line-height:1.15}
+.bday p{margin:3px 0 0;font-size:13px;color:#d6eadd}
+.bday .btn{background:var(--sun);border-color:var(--sun);color:#3b2a03;font-weight:700;margin-top:10px}
+.bday .btn[disabled]{background:rgba(255,255,255,.15);border-color:transparent;color:#fff;cursor:default}
+.bellbtn{position:relative;border:0;background:none;font-size:22px;color:var(--muted);padding:0;line-height:1}
+.bellbtn .badge{position:absolute;top:-2px;right:-3px;width:9px;height:9px;border-radius:50%;background:var(--red);border:2px solid var(--paper)}
+.notif{display:flex;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.notif:first-of-type{border-top:0}
+.notif .ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;font-size:18px}
+.notif.unread b::after{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-left:6px;vertical-align:middle}
+
+.num{display:flex;align-items:center;gap:6px}
+.num .input{text-align:right}
+.num span{color:var(--muted);font-size:14px;min-width:14px}
+.opt{display:flex;gap:8px;align-items:flex-start;font-size:14px;padding:6px 0}
+.opt input{margin-top:3px}
+.preview{background:var(--green-soft);border-radius:14px;padding:12px 14px;margin-top:10px}
+.preview .row{border-top-color:#c7dfcf}
+.input:disabled{background:#f0f3f1;color:var(--muted)}
+
+/* feuille de choix du rôle (petit écran) */
+.sheet{position:fixed;inset:0;background:rgba(22,36,28,.45);display:none;align-items:flex-end;z-index:10}
+.sheet.open{display:flex}
+.sheet .panel{background:var(--paper);width:100%;max-height:85%;overflow:auto;border-radius:22px 22px 0 0;padding:18px 16px 28px}
+.sheet .panel h2.title{font-family:var(--display);font-size:20px;margin:0 0 12px;display:flex;justify-content:space-between;align-items:center}
+
+@media (max-width: 860px){
+  .stage{display:block;padding:0;height:100%}
+  .intro{display:none}
+  .phone{width:100%;height:100%;border:0;border-radius:0;box-shadow:none}
+}
+@media (prefers-reduced-motion: no-preference){
+  .screen > *{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="stage">
+  <aside class="intro">
+    <div class="mark" aria-hidden="true">UTG</div>
+    <h1>L'app de United to Grow</h1>
+    <p>Maquette interactive. Choisis un rôle, puis navigue dans l'app pour voir ce que chaque membre du bureau pourra faire.</p>
+    <div id="roleGroups"></div>
+    <div class="role-note" id="roleNote" aria-live="polite"></div>
+    <p class="fine">Données d'exemple : montants, votes et dates d'anniversaire sont fictifs. Aucune donnée n'est enregistrée.</p>
+  </aside>
+
+  <div class="phone">
+    <div class="app">
+      <header class="top">
+        <div>
+          <p class="assoc">United to Grow</p>
+          <p class="hi" id="hi">Salut Guita</p>
+          <button class="rolebtn" id="roleBtn" aria-haspopup="dialog"><span id="badge">Membre</span><span id="roleCaret"></span></button>
+        </div>
+        <div class="top-actions">
+          <button class="bellbtn" id="bellBtn" aria-label="Notifications, 2 non lues"><span id="bellIc"></span><span class="badge" id="bellBadge"></span></button>
+          <button class="avatar" id="avatar" aria-label="Ouvrir mon profil">GN</button>
+        </div>
+      </header>
+      <main class="screen" id="screen"></main>
+      <nav class="nav" id="nav" aria-label="Navigation principale"></nav>
+    </div>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="panel">
+    <h2 class="title"><span id="sheetTitle">Voir l'app en tant que</span><button class="btn" id="sheetClose" aria-label="Fermer"></button></h2>
+    <div id="sheetGroups"></div>
+    <div class="role-note" id="sheetNote"></div>
+    <p class="fine">Maquette interactive, données d'exemple.</p>
+  </div>
+</div>
+
+<script>
+const ICONS = {"arrow-left": "<path d=\"M5 12l14 0\" /> <path d=\"M5 12l6 6\" /> <path d=\"M5 12l6 -6\" />", "bell": "<path d=\"M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6\" /> <path d=\"M9 17v1a3 3 0 0 0 6 0v-1\" />", "bell-ringing": "<path d=\"M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6\" /> <path d=\"M9 17v1a3 3 0 0 0 6 0v-1\" /> <path d=\"M21 6.727a11.05 11.05 0 0 0 -2.794 -3.727\" /> <path d=\"M3 6.727a11.05 11.05 0 0 1 2.792 -3.727\" />", "book": "<path d=\"M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0\" /> <path d=\"M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0\" /> <path d=\"M3 6l0 13\" /> <path d=\"M12 6l0 13\" /> <path d=\"M21 6l0 13\" />", "brand-discord": "<path d=\"M8 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0\" /> <path d=\"M14 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0\" /> <path d=\"M15.5 17c0 1 1.5 3 2 3c1.5 0 2.833 -1.667 3.5 -3c.667 -1.667 .5 -5.833 -1.5 -11.5c-1.457 -1.015 -3 -1.34 -4.5 -1.5l-.972 1.923a11.913 11.913 0 0 0 -4.053 0l-.975 -1.923c-1.5 .16 -3.043 .485 -4.5 1.5c-2 5.667 -2.167 9.833 -1.5 11.5c.667 1.333 2 3 3.5 3c.5 0 2 -2 2 -3\" /> <path d=\"M7 16.5c3.5 1 6.5 1 10 0\" />", "brand-whatsapp": "<path d=\"M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9\" /> <path d=\"M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1\" />", "cake": "<path d=\"M3 20h18v-8a3 3 0 0 0 -3 -3h-12a3 3 0 0 0 -3 3v8\" /> <path d=\"M3 14.803c.312 .135 .654 .204 1 .197a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1c.35 .007 .692 -.062 1 -.197\" /> <path d=\"M12 4l1.465 1.638a2 2 0 1 1 -3.015 .099l1.55 -1.737\" />", "calendar": "<path d=\"M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12\" /> <path d=\"M16 3v4\" /> <path d=\"M8 3v4\" /> <path d=\"M4 11h16\" /> <path d=\"M11 15h1\" /> <path d=\"M12 15v3\" />", "calendar-share": "<path d=\"M12 21h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v6\" /> <path d=\"M16 3v4\" /> <path d=\"M8 3v4\" /> <path d=\"M4 11h16\" /> <path d=\"M16 22l5 -5\" /> <path d=\"M21 21.5v-4.5h-4.5\" />", "camera": "<path d=\"M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2\" /> <path d=\"M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0\" />", "checkbox": "<path d=\"M9 11l3 3l8 -8\" /> <path d=\"M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9\" />", "chevron-left": "<path d=\"M15 6l-6 6l6 6\" />", "chevron-right": "<path d=\"M9 6l6 6l-6 6\" />", "circle-check": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0\" /> <path d=\"M9 12l2 2l4 -4\" />", "coin": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0\" /> <path d=\"M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1\" /> <path d=\"M12 7v10\" />", "confetti": "<path d=\"M4 5h2\" /> <path d=\"M5 4v2\" /> <path d=\"M11.5 4l-.5 2\" /> <path d=\"M18 5h2\" /> <path d=\"M19 4v2\" /> <path d=\"M15 9l-1 1\" /> <path d=\"M18 13l2 -.5\" /> <path d=\"M18 19h2\" /> <path d=\"M19 18v2\" /> <path d=\"M14 16.518l-6.518 -6.518l-4.39 9.58a1 1 0 0 0 1.329 1.329l9.579 -4.39\" />", "dots": "<path d=\"M4 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\" /> <path d=\"M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\" /> <path d=\"M18 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\" />", "download": "<path d=\"M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2\" /> <path d=\"M7 11l5 5l5 -5\" /> <path d=\"M12 4l0 12\" />", "file-text": "<path d=\"M14 3v4a1 1 0 0 0 1 1h4\" /> <path d=\"M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2\" /> <path d=\"M9 9l1 0\" /> <path d=\"M9 13l6 0\" /> <path d=\"M9 17l6 0\" />", "file-upload": "<path d=\"M14 3v4a1 1 0 0 0 1 1h4\" /> <path d=\"M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2\" /> <path d=\"M12 11v6\" /> <path d=\"M9.5 13.5l2.5 -2.5l2.5 2.5\" />", "gift": "<path d=\"M3 9a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1l0 -2\" /> <path d=\"M12 8l0 13\" /> <path d=\"M19 12v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7\" /> <path d=\"M7.5 8a2.5 2.5 0 0 1 0 -5a4.8 8 0 0 1 4.5 5a4.8 8 0 0 1 4.5 -5a2.5 2.5 0 0 1 0 5\" />", "heart": "<path d=\"M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572\" />", "home": "<path d=\"M5 12l-2 0l9 -9l9 9l-2 0\" /> <path d=\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7\" /> <path d=\"M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6\" />", "info-circle": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0\" /> <path d=\"M12 9h.01\" /> <path d=\"M11 12h1v4h1\" />", "mail": "<path d=\"M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10\" /> <path d=\"M3 7l9 6l9 -6\" />", "map-pin": "<path d=\"M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0\" /> <path d=\"M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0\" />", "message-question": "<path d=\"M8 9h8\" /> <path d=\"M8 13h6\" /> <path d=\"M14 18h-1l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v4.5\" /> <path d=\"M19 22v.01\" /> <path d=\"M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483\" />", "phone": "<path d=\"M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2\" />", "photo": "<path d=\"M15 8h.01\" /> <path d=\"M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12\" /> <path d=\"M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5\" /> <path d=\"M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3\" />", "player-pause": "<path d=\"M6 6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -12\" /> <path d=\"M14 6a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1l0 -12\" />", "point": "<path d=\"M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0\" />", "refresh": "<path d=\"M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4\" /> <path d=\"M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4\" />", "school": "<path d=\"M22 9l-10 -4l-10 4l10 4l10 -4v6\" /> <path d=\"M6 10.6v5.4a6 3 0 0 0 12 0v-5.4\" />", "search": "<path d=\"M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0\" /> <path d=\"M21 21l-6 -6\" />", "tool": "<path d=\"M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5\" />", "upload": "<path d=\"M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2\" /> <path d=\"M7 9l5 -5l5 5\" /> <path d=\"M12 4l0 12\" />", "user": "<path d=\"M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0\" /> <path d=\"M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2\" />", "users": "<path d=\"M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0\" /> <path d=\"M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2\" /> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\" /> <path d=\"M21 21v-2a4 4 0 0 0 -3 -3.85\" />", "x": "<path d=\"M18 6l-12 12\" /> <path d=\"M6 6l12 12\" />"};
+const ic = (n) => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n] || ''}</svg>`;
+
+const L = {
+  fr:{home:"Accueil",agenda:"Agenda",cycle:"Cycle",votes:"Votes",more:"Plus",hi:"Salut Guita",rule:"Règle du jour",ruleT:"Un retard non justifié de plus de 10 minutes coûte 5 €.",next:"Prochaines dates",news:"News",tools:"Mes outils",prof:"Profil",data:"Mes données",lang:"Langue de l'app",notif:"Notifications",roles:"Mes rôles et statut",save:"Enregistrer",pause:"Demander une pause au prochain cycle",out:"Se déconnecter",back:"Retour",contrib:"Cotisation",share:"Ma part",fines:"Amendes",voteNow:"Vote en cours",voteBtn:"Voter",bdayT:"C'est l'anniversaire de Natalia",bdayBtn:"Envoyer mes vœux",bdaySent:"Vœux envoyés",notifs:"Notifications"},
+  en:{home:"Home",agenda:"Calendar",cycle:"Cycle",votes:"Votes",more:"More",hi:"Hi Guita",rule:"Rule of the day",ruleT:"An unexcused delay of more than 10 minutes costs €5.",next:"Coming up",news:"News",tools:"My tools",prof:"Profile",data:"My details",lang:"App language",notif:"Notifications",roles:"My roles and status",save:"Save",pause:"Request a break next cycle",out:"Sign out",back:"Back",contrib:"Contribution",share:"My payout",fines:"Fines",voteNow:"Open vote",voteBtn:"Vote",bdayT:"It's Natalia's birthday",bdayBtn:"Send my wishes",bdaySent:"Wishes sent",notifs:"Notifications"},
+  de:{home:"Start",agenda:"Kalender",cycle:"Zyklus",votes:"Abstimmungen",more:"Mehr",hi:"Hallo Guita",rule:"Regel des Tages",ruleT:"Eine unentschuldigte Verspätung von mehr als 10 Minuten kostet 5 €.",next:"Nächste Termine",news:"Neuigkeiten",tools:"Meine Werkzeuge",prof:"Profil",data:"Meine Daten",lang:"App-Sprache",notif:"Benachrichtigungen",roles:"Meine Rollen und Status",save:"Speichern",pause:"Pause für den nächsten Zyklus beantragen",out:"Abmelden",back:"Zurück",contrib:"Beitrag",share:"Meine Auszahlung",fines:"Strafen",voteNow:"Laufende Abstimmung",voteBtn:"Abstimmen",bdayT:"Natalia hat heute Geburtstag",bdayBtn:"Glückwünsche senden",bdaySent:"Glückwünsche gesendet",notifs:"Benachrichtigungen"}
+};
+let lg = "fr";
+const t = (k) => L[lg][k];
+const P = (x, k) => `<span class="pill p-${k}">${x}</span>`;
+const B = (a, primaryFirst) => a.length ? `<div class="btns">${a.map((x, i) => `<button class="btn${primaryFirst && i === 0 ? ' primary' : ''}">${x}</button>`).join('')}</div>` : '';
+
+const GROUPS = [
+  ["Membres", ["Membre", "Membre en pause"]],
+  ["Bureau", ["Président", "Vice-président", "Secrétaire général", "Trésorière", "Commissaire aux comptes", "Censeur", "Collecteur", "Chargé des activités", "Communication"]],
+  ["Adjoints", ["Secrétaire adjoint", "Assistante trésorière", "Commissaire adjoint", "Censeur adjoint", "Chargé des activités adjoint"]]
+];
+
+const R = {
+  "Membre":{d:"Voit ses cotisations, l'agenda, les news et les règles. Vote, confirme ses paiements et partage des photos."},
+  "Membre en pause":{pause:1,d:"Participe aux réunions, aux votes et aux rencontres, mais ne cotise pas pendant le cycle."},
+  "Président":{d:"Dirige l'association, attribue les rôles, cosigne les sorties d'argent et exécute les décisions de l'assemblée.",r:[["Membres actifs, en pause","9, 1"],["Sorties à cosigner","1 sur 3 signatures"],["Exclusion votée par l'AG","à exécuter"]],a:["Gérer les membres","Mettre en pause"],cfg:["Paramètres financiers","Assigner les rôles","Retirer un membre"]},
+  "Vice-président":{base:"Président",adj:"Remplace le président en cas d'empêchement",d:"Assiste le président et le remplace quand il est empêché."},
+  "Secrétaire général":{d:"Saisit les cycles et l'ordre de passage, publie les news et les comptes rendus, importe les statuts et le règlement.",r:[["Cycle 11","prêt pour le vote"],["Document importé","à vérifier"],["Compte rendu","réunion de septembre"]],a:["Saisir le cycle","Importer un document","Publier une news","Ajouter à l'historique"],cfg:["Valider la publication des textes"]},
+  "Secrétaire adjoint":{base:"Secrétaire général",adj:"Assure l'intérim et tient le registre des contacts",d:"Aide le secrétaire général et le remplace si besoin."},
+  "Trésorière":{d:"Tient le compte de base, le compte de secours et le compte de solidarité. Gère les prêts et les cautions.",r:[["Compte de base","650 €"],["Compte de secours","1 120 €"],["Compte de solidarité","312 €"],["Prêts en cours","2, dont 1 en pénalité"],["Sortie en attente","logement, 1 440 €"]],a:["Nouveau prêt","Écriture de caisse","Déduire des cautions","Voir les paramètres financiers"],cfg:["Rapport semestriel"]},
+  "Assistante trésorière":{base:"Trésorière",adj:"Mêmes opérations, sans le rapport semestriel",d:"Aide la trésorière pour les opérations courantes."},
+  "Commissaire aux comptes":{d:"Contrôle les comptes chaque mois et cosigne toute sortie d'argent.",r:[["Sorties à cosigner","1"],["Contrôle mensuel","septembre à rédiger"]],a:["Cosigner la sortie","Voir le journal"],cfg:["Rapport semestriel"]},
+  "Commissaire adjoint":{base:"Commissaire aux comptes",adj:"Peut cosigner si le commissaire est absent",d:"Remplace le commissaire aux comptes quand il est absent."},
+  "Censeur":{d:"Fait l'appel aux réunions, applique le barème des amendes et tient le registre des sanctions.",r:[["Prochain appel","dimanche 27 sept."],["Amendes impayées","2, soit 15 €"],["Alerte","3 absences justifiées d'affilée"]],a:["Faire l'appel","Infliger une amende","Registre des sanctions","Ajouter à l'historique"],cfg:["Modifier le barème"]},
+  "Censeur adjoint":{base:"Censeur",adj:"Fait l'appel en l'absence du censeur",d:"Remplace le censeur pendant les réunions."},
+  "Collecteur":{d:"Suit les cotisations jusqu'au 15 du mois et confirme les versements aux bénéficiaires.",r:[["Attendu pour le 15 sept.","770 €"],["Noms payés","9 sur 11"],["« J'ai payé » à vérifier","1"],["Bénéficiaires","Roger 2, Quiniva"]],a:["Marquer les paiements","Confirmer le versement"]},
+  "Chargé des activités":{d:"Organise les deux rencontres de l'année et cherche les logements.",r:[["Rencontre du printemps 2027","ville en vote"],["Logements proposés","3"],["Participants confirmés","8 sur 10"]],a:["Proposer un logement","Créer un événement"],cfg:["Demander le paiement"]},
+  "Chargé des activités adjoint":{base:"Chargé des activités",adj:"Aide à la recherche de logements",d:"Aide à préparer les rencontres."},
+  "Communication":{d:"Publie le résumé des réunions, les annonces et les messages d'anniversaire.",r:[["Anniversaire du jour","Natalia"],["Prochain anniversaire","Shane, 22 sept."],["Résumé de réunion","à publier"]],a:["Écrire un mot pour Natalia","Publier un résumé","Envoyer une notification"]}
+};
+
+const MEMBERS = [
+  {n:"Dimitrie Feuakeng Tayon", s:"Dimitrie", roles:["Président"], names:2, since:"2021", phone:true},
+  {n:"Roger Bentcha", s:"Roger", roles:["Vice-président"], names:2, since:"2025", phone:true},
+  {n:"Hamilton Tsafack", s:"Hamilton", roles:["Secrétaire général"], names:2, since:"2021", phone:false},
+  {n:"Natalia Kapilima", s:"Natalia", roles:["Trésorière"], names:1, since:"2021", phone:true, bday:"15 septembre", today:true},
+  {n:"Shane Moyou", s:"Shane", roles:["Censeur"], names:2, since:"2025", phone:false, bday:"22 septembre"},
+  {n:"Guirauld Noumboussi Tayon", s:"Guita", roles:["Collecteur"], names:1, since:"2021", phone:true, me:true, bday:"8 décembre"},
+  {n:"Audrey Fortune", s:"Audrey", roles:["Communication"], names:1, since:"2021", phone:true},
+  {n:"Quiniva Ngwache", s:"Quiniva", roles:["Assistante trésorière"], names:1, since:"2021", phone:false},
+  {n:"Loïc Lamere", s:"Loïc", roles:["Secrétaire adjoint"], names:1, since:"2025", phone:true, bday:"2 octobre"},
+  {n:"Estelle Kevine", s:"Estelle", roles:[], names:2, since:"2024", phone:false, pause:true, bday:"14 mars"}
+];
+const BUREAU = ["Président","Vice-président","Secrétaire général","Trésorière","Commissaire aux comptes","Censeur","Collecteur","Chargé des activités","Communication"];
+let wishSent = false, notifRead = false;
+const FIN_CURRENT = {amount:35, perMonth:2, depositMode:'auto', depositFixed:70, penBase:0.5, penSecours:1, reinstate:50, solidarity:24};
+let finDraft = {...FIN_CURRENT, fromCycle:11, vote:true};
+let finProposed = null;
+const eur = (n) => (Number.isInteger(n) ? n : n.toFixed(2).replace('.', ',')) + ' €';
+const deposit = (f) => f.depositMode === 'auto' ? f.amount * f.perMonth : f.depositFixed;
+let memberFilter = "Tous", memberQuery = "", memberIdx = 0;
+const initials = (n) => n.split(' ').slice(0, 2).map(w => w[0]).join('');
+
+let role = "Membre", tab = "home", stack = [];
+const sub = () => stack[stack.length - 1] || null;
+const pause = () => role === "Membre en pause";
+const has = (...roles) => roles.includes(role);
+const isSec = () => has("Secrétaire général", "Secrétaire adjoint");
+
+function tools() {
+  const d = R[role], s = d.base ? R[d.base] : d;
+  if (!s.r) return '';
+  const acts = d.adj ? s.a : s.a.concat(s.cfg || []);
+  const NAV = {"Paramètres financiers":"finances","Voir les paramètres financiers":"finances"};
+  return `<section class="tools"><h3 class="h">${ic('tool')} ${t('tools')}</h3>
+    ${d.adj ? `<p class="sub" style="margin-bottom:4px">${P('Adjoint','warn')} ${d.adj}</p>` : ''}
+    ${s.r.map(x => `<div class="row"><span>${x[0]}</span><span class="strong">${x[1]}</span></div>`).join('')}
+    <div class="btns">${acts.map((x, i) => NAV[x] ? `<button class="btn go${i === 0 ? ' primary' : ''}" data-s="${NAV[x]}">${ic('coin')} ${x}</button>` : `<button class="btn${i === 0 ? ' primary' : ''}">${x}</button>`).join('')}</div></section>`;
+}
+
+function home() {
+  return (pause() ? `<div class="pause">${ic('player-pause')}<span>Tu es en pause pour le cycle 10. Réunions, votes et rencontres restent ouverts, sans cotisation.</span></div>` : '') +
+  `<section class="bday" aria-live="polite">${ic('cake')}<div style="flex:1"><h3>${t('bdayT')}</h3>
+    <p>Aujourd'hui, 15 septembre. ${wishSent ? 6 : 5} membres lui ont déjà souhaité.</p>
+    <button class="btn wish" ${wishSent ? 'disabled' : ''}>${wishSent ? ic('heart') + ' ' + t('bdaySent') : ic('gift') + ' ' + t('bdayBtn')}</button></div></section>
+  <section class="rule"><p class="sub">${ic('book')} ${t('rule')}, règlement intérieur art. 10</p><p class="t">${t('ruleT')}</p></section>
+  <div class="stats">
+    <div class="stat"><span class="sub">${t('contrib')}</span><b>${pause() ? 'En pause' : '35 €'}</b><span class="sub">${pause() ? 'cycle 10' : 'avant le 15 oct.'}</span></div>
+    <div class="stat"><span class="sub">${t('share')}</span><b>${pause() ? 'Aucune' : '385 €'}</b><span class="sub">${pause() ? 'au cycle 11' : 'reçue en août'}</span></div>
+    <div class="stat"><span class="sub">${t('fines')}</span><b>0 €</b><span class="sub">à jour</span></div>
+  </div>
+  <section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">${ic('checkbox')} ${t('voteNow')}</h3>${P('jusqu\u2019au 20 sept.','warn')}</div>
+    <p style="margin:2px 0 0;font-size:14px">Ville de la rencontre du printemps 2027</p>${B([t('voteBtn')], true)}</section>
+  <section class="card"><h3 class="h">${t('next')}</h3>
+    <div class="row"><span>${ic('brand-discord')} Réunion ordinaire</span><span class="sub">dim. 27 sept.</span></div>
+    <div class="row"><span>${ic('cake')} Anniversaire de Shane</span><span class="sub">22 sept.</span></div>
+    <div class="row"><span>${ic('cake')} Anniversaire de Loïc</span><span class="sub">2 oct.</span></div>
+    <div class="row"><span>${ic('coin')} Cotisation pour Audrey</span><span class="sub">15 oct.</span></div>
+    <div class="row"><span>${ic('map-pin')} Rencontre du printemps</span><span class="sub">mars 2027</span></div></section>
+  <section class="card"><h3 class="h">${t('news')}</h3>
+    <div class="row"><span>${ic('confetti')} Joyeux anniversaire Natalia !</span>${P('Anniversaire','warn')}</div>
+    <div class="row"><span>Règlement intérieur révisé : 4 articles modifiés</span>${P('Annonce','ok')}</div>
+    <div class="row"><span>Résumé de la réunion d'août</span>${P('Rapport','mute')}</div></section>` + tools();
+}
+
+function agenda() {
+  const ev = {15:'var(--green)', 20:'var(--sun)', 22:'var(--sun)', 27:'var(--ink)'};
+  let g = ['L','M','M','J','V','S','D'].map(x => `<span class="sub">${x}</span>`).join('') + '<span></span>';
+  for (let d = 1; d <= 30; d++) {
+    g += `<span class="d${d === 15 ? ' today' : ''}">${d}${ev[d] && d !== 15 ? `<i class="dot" style="background:${ev[d]}"></i>` : '<i class="dot"></i>'}</span>`;
+  }
+  const canPlan = has("Président","Vice-président","Secrétaire général","Secrétaire adjoint","Chargé des activités","Chargé des activités adjoint");
+  return `<section class="card"><div class="row" style="padding-top:0"><button class="btn" aria-label="Mois précédent">${ic('chevron-left')}</button><h3 class="h" style="margin:0">Septembre 2026</h3><button class="btn" aria-label="Mois suivant">${ic('chevron-right')}</button></div><div class="cal">${g}</div></section>
+  <section class="card">
+    <div class="row"><span><b>15 sept.</b> Cotisation du cycle 10<br><span class="sub">Bénéficiaires : Roger 2 et Quiniva</span></span>${P('aujourd\u2019hui','ok')}</div>
+    <div class="row"><span><b>15 sept.</b> Anniversaire de Natalia</span>${ic('cake')}</div>
+    <div class="row"><span><b>20 sept.</b> Fin du vote<br><span class="sub">Ville de la rencontre 2027</span></span>${P('vote','warn')}</div>
+    <div class="row"><span><b>22 sept.</b> Anniversaire de Shane</span>${ic('cake')}</div>
+    <div class="row"><span><b>27 sept., 18 h</b> Réunion ordinaire<br><span class="sub">Sur Discord, avec le vote du cycle 11</span></span>${P('réunion','mute')}</div>
+    <div class="btns"><button class="btn primary">Je serai là</button><button class="btn">Absence justifiée</button></div>
+    <div class="row"><span><b>15 oct.</b> Remboursement d'un prêt<br><span class="sub">Ensuite 0,50 € par jour de retard</span></span>${P('prêt','bad')}</div>
+    <div class="row"><span><b>Mars 2027</b> Rencontre du printemps<br><span class="sub">Ville en vote, logement par les chargés des activités</span></span>${P('rencontre','mute')}</div>
+  </section>
+  <section class="card"><p class="sub">${ic('calendar-share')} Tu peux ajouter ces dates à Google Agenda ou au calendrier de ton téléphone.</p></section>
+  ${canPlan ? B(['Planifier une réunion','Créer un événement'], true) : ''}`;
+}
+
+function cycle() {
+  const m = [
+    ["avr.", "Loïc, Dimitrie 2", 1, "385 € chacun"],
+    ["mai", "Hamilton 1, Dimitrie 1", 1, "385 € chacun"],
+    ["juin", "Shane 2, Roger 1", 1, "385 € chacun"],
+    ["juil.", "Natalia, Hamilton 2", 1, "385 € chacun"],
+    ["août", "Shane 1, Guirauld", 1, "385 € chacun"],
+    ["sept.", "Roger 2, Quiniva", 2, "385 € chacun"],
+    ["oct.", "Audrey", 0, "420 €"]
+  ];
+  const next = isSec()
+    ? `<section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">Cycle 11</h3>${P('brouillon','warn')}</div>
+        <div class="step">${ic('circle-check')} Montant et date : ${eur((finProposed && finProposed.adopted) ? finProposed.amount : FIN_CURRENT.amount)} par nom, début le 15 nov. 2026</div>
+        <div class="step">${ic('circle-check')} Participants : 10 membres, 15 noms, Estelle revient</div>
+        <div class="step">${ic('circle-check')} Ordre de passage : 1 tirage au sort</div>
+        <div class="step" style="color:var(--green-dark)">${ic('point')} Vote à la réunion du 27 septembre</div>
+        ${B(['Soumettre au vote','Voir l\u2019aperçu'], true)}</section>`
+    : `<section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">Cycle 11</h3>${P('vote le 27 sept.','warn')}</div>
+        <p class="sub">Le secrétariat a préparé l'ordre de passage. Il sera validé par vote à la prochaine réunion.</p>${B(['Voir l\u2019ordre proposé'])}</section>`;
+  return `<section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0;font-size:18px">Cycle 10</h3>${P('35 € par nom','ok')}</div>
+    <p class="sub">Depuis le 15 avril 2026, 7 mois, 13 noms actifs. Les deux noms d\u2019Estelle sont en pause.</p>
+    ${m.map(x => `<div class="row"><span><span class="sub" style="display:inline-block;width:38px">${x[0]}</span>${x[1]}<br><span class="sub" style="margin-left:38px">${x[3]}</span></span>${x[2] == 1 ? P('versé','ok') : x[2] == 2 ? P('en cours','warn') : P('à venir','mute')}</div>`).join('')}
+    ${has('Collecteur') ? B(['Marquer les paiements'], true) : ''}</section>
+  ${next}
+  <section class="card"><h3 class="h">${ic('info-circle')} Comment sont calculés les montants</h3>
+    <p style="margin:0;font-size:14px;line-height:1.45">Les noms qui ne reçoivent pas paient 70 € quand deux personnes reçoivent, 35 € quand une seule reçoit. Les bénéficiaires ne paient rien ce mois-là. Chaque bénéficiaire reçoit donc 385 €, ou 420 € s'il est seul. Sur tout le cycle, chacun reçoit exactement ce qu'il a versé.</p></section>
+  <section class="card"><h3 class="h">Mes comptes</h3>
+    <div class="row"><span>Caution au compte de base, 1 nom</span><span class="strong">${pause() ? 'suspendu' : '70 € versés'}</span></div>
+    <div class="row"><span>Compte de solidarité</span><span class="strong">24 € par an, payé</span></div>
+    <div class="row"><span>Compte de secours</span><span class="strong">aucun prêt</span></div></section>`;
+}
+
+function votes() {
+  const o = [["Hambourg", 4], ["Cologne", 3], ["Munich", 1]];
+  return (finProposed ? `<section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">Nouveaux montants à partir du cycle ${finProposed.fromCycle}</h3>${P('majorité simple','ok')}</div>
+    <p class="sub">Proposé par le président : ${eur(finProposed.amount)} par nom, caution de ${eur(deposit(finProposed))} par nom. Vote pendant la réunion du 27 septembre.</p>${B([t('voteBtn')], true)}</section>` : '') +
+  `<section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">Validation du cycle 11</h3>${P('majorité simple','ok')}</div>
+    <p class="sub">Vote pendant la réunion du 27 septembre</p>${B(['Voir l\u2019ordre proposé'])}</section>
+  <section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">Ville de la rencontre 2027</h3>${P('majorité simple','ok')}</div>
+    <p class="sub">8 votes sur 10, jusqu'au 20 septembre</p>
+    ${o.map(x => `<div style="margin-top:10px;font-size:14px"><div style="display:flex;justify-content:space-between"><span>${x[0]}</span><span>${x[1]}</span></div><div class="bar"><i style="width:${Math.round(x[1] / 8 * 100)}%"></i></div></div>`).join('')}
+    ${B([t('voteBtn')], true)}</section>
+  <section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">Admission d'un nouveau membre</h3>${P('3/5 requis','warn')}</div>
+    <p class="sub">Vote secret. Période d'essai d'un cycle si le membre est admis.</p>
+    <div style="margin-top:10px;font-size:14px;display:flex;justify-content:space-between"><span>Pour 7, contre 1</span><span>88 %</span></div><div class="bar"><i style="width:88%"></i></div>
+    ${B([t('voteBtn')], true)}</section>
+  <section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">Révision du règlement intérieur</h3>${P('adopté','ok')}</div>
+    <p class="sub">2/3 requis, 8 pour sur 9 votes exprimés</p></section>
+  ${has('Président','Vice-président','Secrétaire général') ? B(['Créer un vote'], true) : ''}`;
+}
+
+function more() {
+  const it = [["membres","Membres et rôles","users"],["album","Album et historique","photo"],["regles","Règles et Schulung","school"],["docs","Documents","file-text"],["prof",t('prof'),"user"]];
+  if (has("Président","Vice-président","Trésorière","Assistante trésorière","Commissaire aux comptes","Commissaire adjoint")) it.splice(1, 0, ["finances","Paramètres financiers","coin"]);
+  return `<div class="grid2">${it.map((x, i) => `<button class="tile go" data-s="${x[0]}" ${i === 0 ? 'style="grid-column:1 / -1"' : ''}>${ic(x[2])}${x[1]}</button>`).join('')}</div>`;
+}
+
+function membres() {
+  const q = memberQuery.toLowerCase();
+  const list = MEMBERS.map((m, i) => ({...m, i})).filter(m => {
+    if (q && !(m.n + ' ' + m.s + ' ' + m.roles.join(' ')).toLowerCase().includes(q)) return false;
+    if (memberFilter === "Bureau") return m.roles.some(r => BUREAU.includes(r));
+    if (memberFilter === "Adjoints") return m.roles.some(r => !BUREAU.includes(r));
+    if (memberFilter === "En pause") return m.pause;
+    return true;
+  });
+  const filters = ["Tous","Bureau","Adjoints","En pause"];
+  return `<h3 class="h" style="font-size:18px">Membres et rôles</h3>
+  <p class="sub" style="margin-bottom:8px">10 membres, dont 9 actifs et 1 en pause</p>
+  <label class="field" for="mq" style="margin-top:0">Rechercher un membre ou un rôle</label>
+  <input class="input" id="mq" value="${memberQuery}" placeholder="Ex. trésorière, Shane" autocomplete="off">
+  <div class="seg" style="margin:8px 0 10px">${filters.map(f => `<button class="btn mf" data-f="${f}" aria-pressed="${f === memberFilter}">${f}</button>`).join('')}</div>
+  <section class="card" id="mlist">${list.length ? list.map(m => `<button class="row mrow" data-i="${m.i}" style="width:100%;background:none;border-left:0;border-right:0;border-bottom:0;text-align:left;padding:10px 0">
+      <span style="display:flex;align-items:center;gap:10px;min-width:0">
+        <span class="avatar" style="width:38px;height:38px;display:grid;place-items:center;flex:none;${m.me ? '' : 'background:var(--green-soft);color:var(--green-dark)'}">${initials(m.n)}</span>
+        <span style="min-width:0"><b style="display:block">${m.n}${m.me ? ' <span class="sub">(moi)</span>' : ''}</b>
+          <span class="sub">${m.roles.length ? m.roles.join(', ') : 'Membre'}${m.today ? ' <span style="color:var(--sun-ink)">' + ic('cake') + " anniversaire aujourd'hui</span>" : ''}</span></span>
+      </span>
+      ${m.pause ? P('en pause','warn') : ic('chevron-right')}
+    </button>`).join('') : `<p class="sub">Aucun membre ne correspond. Essaie un autre nom ou retire le filtre.</p>`}</section>
+  ${has('Président','Secrétaire général','Secrétaire adjoint') ? B(['Inviter un membre'], true) : ''}`;
+}
+
+function membre() {
+  const m = MEMBERS[memberIdx];
+  const bureau = role !== "Membre" && role !== "Membre en pause";
+  const showContact = m.phone || bureau || m.me;
+  const duty = m.roles.length ? R[m.roles[0]].d : "Membre de l'association, sans rôle au bureau.";
+  return `<section class="card" style="text-align:center;padding-top:18px">
+    <div class="avatar" style="width:72px;height:72px;font-size:22px;display:grid;place-items:center;margin:0 auto 8px">${initials(m.n)}</div>
+    <h3 class="h" style="justify-content:center;font-size:19px;margin-bottom:2px">${m.n}</h3>
+    <p class="sub">Membre depuis ${m.since}</p>
+    ${m.bday ? `<p style="margin:6px 0 0;font-size:14px;color:${m.today ? 'var(--sun-ink)' : 'var(--muted)'}">${ic('cake')} ${m.today ? "Anniversaire aujourd'hui" : 'Anniversaire le ' + m.bday}</p>` : ''}
+    <div class="btns" style="justify-content:center">${m.roles.length ? m.roles.map(r => P(r,'ok')).join(' ') : P('Membre','mute')} ${m.pause ? P('en pause','warn') : ''}</div>
+  </section>
+  <section class="card"><h3 class="h">Rôle</h3><p style="margin:0;font-size:14px;line-height:1.45">${duty}</p></section>
+  <section class="card"><h3 class="h">Cycle 10</h3>
+    <div class="row"><span>Noms dans le cycle</span><span class="strong">${m.pause ? m.names + ', en pause' : m.names}</span></div>
+    <div class="row"><span>Caution au compte de base</span><span class="strong">${eur(m.names * deposit(FIN_CURRENT))}</span></div>
+    <div class="row"><span>Montant reçu par nom</span><span class="strong">${m.pause ? 'aucun ce cycle' : (m.s === 'Audrey' ? '420 €' : '385 €')}</span></div></section>
+  <section class="card"><h3 class="h">Contact</h3>
+    ${showContact ? `<div class="btns"><button class="btn primary">${ic('brand-whatsapp')} WhatsApp</button><button class="btn">${ic('phone')} Appeler</button><button class="btn">${ic('mail')} E-mail</button></div>`
+      : `<p class="sub">${m.s} a choisi de ne montrer ses coordonnées qu'au bureau.</p>`}
+  </section>
+  ${has('Président') && !m.me ? B(['Attribuer un rôle','Mettre en pause']) : ''}`;
+}
+
+function finPreview(f) {
+  const N = 15, months = Math.ceil(N / f.perMonth), single = N % f.perMonth;
+  return `<p class="h" style="font-size:14px;margin-bottom:2px">${ic('info-circle')} Aperçu pour le cycle ${f.fromCycle ?? 11}</p>
+    <p class="sub">15 noms, ${months} mois, ${f.perMonth} bénéficiaire${f.perMonth > 1 ? 's' : ''} par mois</p>
+    <div class="row"><span>Cotisation quand ${f.perMonth} personne${f.perMonth > 1 ? 's' : ''} reçoivent</span><span class="strong">${eur(f.amount * f.perMonth)}</span></div>
+    <div class="row"><span>Chaque bénéficiaire reçoit</span><span class="strong">${eur(f.amount * (N - f.perMonth))}</span></div>
+    ${single ? `<div class="row"><span>Le dernier mois, un seul reçoit</span><span class="strong">${eur(f.amount * (N - 1))}</span></div>` : ''}
+    <div class="row"><span>Caution par nom</span><span class="strong">${eur(deposit(f))}</span></div>
+    <div class="row"><span>Caution d'un membre à deux noms</span><span class="strong">${eur(deposit(f) * 2)}</span></div>`;
+}
+
+function finances() {
+  const edit = has("Président");
+  const f = finDraft, c = FIN_CURRENT, dis = edit ? '' : 'disabled';
+  const field = (id, label, val, unit, step) => `<label class="field" for="${id}">${label}</label><div class="num"><input class="input fin" id="${id}" data-k="${id}" type="number" min="0" step="${step}" value="${val}" ${dis}><span>${unit}</span></div>`;
+  return `<h3 class="h" style="font-size:18px">Paramètres financiers</h3>
+  <p class="sub" style="margin-bottom:10px">Un changement s'applique à partir d'un prochain cycle. Le cycle en cours garde ses montants.</p>
+  ${finProposed ? `<section class="pause">${ic('checkbox')}<span>Proposition envoyée au vote de la réunion du 27 septembre : ${eur(finProposed.amount)} par nom et ${eur(deposit(finProposed))} de caution par nom, à partir du cycle ${finProposed.fromCycle}.</span></section>` : ''}
+  <section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">En vigueur</h3>${P('cycle 10','ok')}</div>
+    <div class="row"><span>Montant par nom</span><span class="strong">${eur(c.amount)}</span></div>
+    <div class="row"><span>Bénéficiaires par mois</span><span class="strong">${c.perMonth}</span></div>
+    <div class="row"><span>Caution du compte de base, par nom</span><span class="strong">${eur(deposit(c))}</span></div>
+    <div class="row"><span>Caution d'un membre à deux noms</span><span class="strong">${eur(deposit(c) * 2)}</span></div>
+    <div class="row"><span>Pénalité de retard, compte de base</span><span class="strong">${eur(c.penBase)} par jour</span></div>
+    <div class="row"><span>Pénalité de retard, compte de secours</span><span class="strong">${eur(c.penSecours)} par jour</span></div>
+    <div class="row"><span>Compte de solidarité</span><span class="strong">${eur(c.solidarity)} par an</span></div></section>
+  <section class="card"><h3 class="h">${edit ? 'Proposer de nouveaux montants' : 'Modifier les montants'}</h3>
+    ${edit ? '' : `<p class="sub">Seul le président peut proposer un changement. Il est ensuite validé par un vote.</p>`}
+    ${field('amount', 'Montant par nom', f.amount, '€', 1)}
+    ${field('perMonth', 'Bénéficiaires par mois', f.perMonth, '', 1)}
+    <p class="field">Caution du compte de base, par nom</p>
+    <label class="opt"><input type="radio" name="dep" class="fin-dep" value="auto" ${f.depositMode === 'auto' ? 'checked' : ''} ${dis}><span>Automatique : montant par nom × bénéficiaires par mois</span></label>
+    <label class="opt"><input type="radio" name="dep" class="fin-dep" value="fixed" ${f.depositMode === 'fixed' ? 'checked' : ''} ${dis}><span>Montant fixe</span></label>
+    <div class="num"><input class="input fin" id="depositFixed" data-k="depositFixed" type="number" min="0" step="1" value="${f.depositFixed}" aria-label="Montant fixe de la caution" ${edit && f.depositMode === 'fixed' ? '' : 'disabled'}><span>€</span></div>
+    ${field('penBase', 'Pénalité de retard, compte de base, par jour', f.penBase, '€', 0.1)}
+    ${field('penSecours', 'Pénalité de retard, compte de secours, par jour', f.penSecours, '€', 0.1)}
+    ${field('reinstate', 'Supplément pour revenir après un prêt de secours non remboursé', f.reinstate, '€', 1)}
+    ${field('solidarity', 'Compte de solidarité, par an', f.solidarity, '€', 1)}
+    <label class="field" for="fromCycle">Appliquer à partir du</label>
+    <select class="input" id="fromCycle" ${dis}><option value="11" ${f.fromCycle == 11 ? 'selected' : ''}>Cycle 11 (novembre 2026)</option><option value="12" ${f.fromCycle == 12 ? 'selected' : ''}>Cycle 12</option></select>
+    <label class="opt" style="margin-top:6px"><input type="checkbox" id="finVote" ${f.vote ? 'checked' : ''} ${dis}><span>Faire valider par un vote en réunion</span></label>
+    <div class="preview" id="finPreview">${finPreview(f)}</div>
+    ${edit ? `<div class="btns"><button class="btn primary" id="finSubmit">${f.vote ? 'Proposer au vote' : 'Enregistrer'}</button><button class="btn" id="finReset">Annuler les modifications</button></div>` : ''}
+  </section>
+  <section class="card"><h3 class="h">Historique des montants</h3>
+    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:86px">Cycle 8, 2025</span><span>35 € par nom, caution de 70 € par nom</span></div>
+    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:86px">Cycle 3, 2022</span><span>25 € par nom, caution de 50 € par nom</span></div>
+    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:86px">Cycle 2, 2022</span><span>25 € par nom, caution de 30 € par nom</span></div>
+    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:86px">Cycle 1, 2021</span><span>caution de 20 € par nom</span></div></section>`;
+}
+
+function notifs() {
+  const n = [
+    [1,'cake','var(--sun-soft)','var(--sun-ink)',"C'est l'anniversaire de Natalia","Envoie-lui tes vœux dans l'app.","8:00"],
+    [1,'bell-ringing','var(--green-soft)','var(--green-dark)',"Cotisation du 15 septembre","Bénéficiaires : Roger 2 et Quiniva.","7:30"],
+    [0,'checkbox','var(--green-soft)','var(--green-dark)',"Vote bientôt clos","Ville de la rencontre 2027, jusqu'au 20 septembre.","hier"],
+    [0,'file-text','#edf0ee','var(--muted)',"Nouveau rapport","Résumé de la réunion d'août.","12 sept."],
+    [0,'cake','var(--sun-soft)','var(--sun-ink)',"Anniversaire de Shane dans une semaine","Le 22 septembre.","15 sept."]
+  ];
+  return `<h3 class="h" style="font-size:18px">${t('notifs')}</h3>
+  <section class="card">${n.map(x => `<div class="notif${x[0] && !notifRead ? ' unread' : ''}"><span class="ico" style="background:${x[2]};color:${x[3]}">${ic(x[1])}</span><span style="flex:1"><b>${x[4]}</b><br><span class="sub">${x[5]}</span></span><span class="sub">${x[6]}</span></div>`).join('')}</section>
+  <p class="sub">Chaque membre choisit dans son profil les notifications qu'il reçoit.</p>`;
+}
+
+function album() {
+  const a = [["Rodgau","mars 2026, 96 médias"],["Neuilly-sur-Marne","mai 2025, 63 médias"],["Weinheim","oct. 2024, 31 médias"],["Stuttgart","mars 2024, 43 médias"]];
+  const ed = has('Secrétaire général','Secrétaire adjoint','Censeur','Censeur adjoint');
+  return `<div class="row" style="border:0;padding-top:0"><h3 class="h" style="margin:0">Albums des rencontres</h3><button class="btn primary">${ic('upload')} Ajouter</button></div>
+  <div class="grid2" style="margin-bottom:12px">${a.map(x => `<div class="card" style="margin:0;padding:8px"><div class="thumb">${ic('photo')}</div><p style="margin:6px 0 0;font-size:14px;font-weight:700">${x[0]}</p><p class="sub">${x[1]}</p></div>`).join('')}</div>
+  <section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">Historique</h3>${ed ? '<button class="btn">Ajouter une entrée</button>' : P('lecture seule','mute')}</div>
+    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:76px">15.03.2026</span><span>Cycle 10 : Estelle se met en pause</span></div>
+    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:76px">12.03.2026</span><span>Rencontre à Rodgau</span></div>
+    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:76px">24.08.2025</span><span>Cycle 9 : Roger nous rejoint</span></div>
+    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:76px">06.01.2025</span><span>Cotisation à 35 €, Shane et Loïc nous rejoignent</span></div></section>`;
+}
+
+function regles() {
+  const c = [["Statuts : adhésion et bureau",1],["Présence, absences, retards",1],["Discipline et sanctions",1],["Votes et majorités",0],["Exclusion",0],["Comptes et prêts",0]];
+  return `<section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">${ic('school')} Schulung</h3><span class="sub">3 modules sur 6</span></div><div class="bar"><i style="width:50%"></i></div>
+    ${c.map(x => `<div class="row"><span>${x[0]}</span>${x[1] ? P('lu, quiz 3/3','ok') : P('à lire','warn')}</div>`).join('')}</section>
+  <section class="card"><h3 class="h">Textes en vigueur</h3>
+    <div class="row"><span>Statuts, 35 articles</span>${ic('chevron-right')}</div>
+    <div class="row"><span>Règlement intérieur, 34 articles</span>${P('4 modifiés','warn')}</div>
+    <div class="btns"><button class="btn">${ic('search')} Chercher un article</button><button class="btn">${ic('message-question')} Poser une question</button></div></section>
+  ${has('Secrétaire général','Secrétaire adjoint','Président') ? B(['Modifier les textes','Suivi des lectures'], true) : ''}`;
+}
+
+function docs() {
+  const up = isSec() ? `<div class="drop">${ic('file-upload')}<p style="margin:6px 0 0;font-weight:700">Importer un document</p><p class="sub">PDF, Word ou photo du document papier</p></div>
+  <section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">Règlement intérieur révisé.pdf</h3>${P('à vérifier','warn')}</div>
+    ${[["Texte lu",1],["Type reconnu : règlement intérieur",1],["10 chapitres, 34 articles",1],["Vérification par le secrétariat",2],["Publication",0]].map(x => `<div class="step" style="color:${x[1]==2?'var(--green-dark)':x[1]==0?'var(--faint)':'inherit'}">${ic(x[1]==1?'circle-check':x[1]==2?'point':'circle-dashed')} ${x[0]}</div>`).join('')}</section>
+  <section class="card"><h3 class="h">Ce que l'analyse a trouvé</h3>
+    <div class="row"><span>Amendes : absence 10 €, retard 5 €, trouble 5 €</span><button class="btn">Au barème</button></div>
+    <div class="row"><span>Majorités : simple, 2/3 pour l'exclusion</span><button class="btn">Aux votes</button></div>
+    <div class="row"><span>Articles modifiés : 8, 10, 20, 25</span>${P('comparer','mute')}</div>
+    <div class="row"><span style="color:var(--sun-ink)">Différence avec les statuts, art. 8 (3/5)</span>${P('à trancher','warn')}</div>
+    <p class="sub" style="margin-top:6px">À la publication : articles consultables, règle du jour, modules de Schulung avec quiz, annonce en brouillon, traductions en anglais et en allemand.</p>
+    ${B(['Vérifier les articles','Publier'])}</section>` : '';
+  return up + `<section class="card"><h3 class="h">Documents de l'association</h3>
+    <div class="row"><span>${ic('file-text')} Statuts, janvier 2026</span>${P('FR et EN','mute')}</div>
+    <div class="row"><span>${ic('file-text')} Règlement intérieur</span>${P('en vigueur','ok')}</div>
+    <div class="row"><span>${ic('file-text')} Historique des cycles 1 à 10</span>${ic('download')}</div></section>`;
+}
+
+function prof() {
+  const d = R[role];
+  return `<div style="text-align:center;margin-bottom:10px"><div class="avatar" style="width:64px;height:64px;font-size:20px;display:grid;place-items:center;margin:0 auto">GN</div><button class="back" style="margin:4px auto 0">${ic('camera')} Changer la photo</button></div>
+  <section class="card"><h3 class="h">${t('data')}</h3>
+    ${[["Nom","Guirauld Noumboussi Tayon"],["E-mail","guita@exemple.de"],["Téléphone","+49 ··· ··· 237"],["Ville","Bremen"]].map((x, i) => `<label class="field" for="f${i}">${x[0]}</label><input class="input" id="f${i}" value="${x[1]}">`).join('')}
+    ${B([t('save')], true)}</section>
+  <section class="card"><h3 class="h">${ic('cake')} Anniversaire</h3>
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:8px">
+      <div><label class="field" for="bd">Jour</label><input class="input" id="bd" value="8" inputmode="numeric"></div>
+      <div><label class="field" for="bm">Mois</label><input class="input" id="bm" value="décembre"></div>
+    </div>
+    <label class="field" for="by">Année de naissance, facultative et jamais affichée</label><input class="input" id="by" placeholder="Non renseignée" inputmode="numeric">
+    <label class="row" style="margin-top:6px"><span>Afficher mon anniversaire aux membres</span><input type="checkbox" checked></label></section>
+  <section class="card"><h3 class="h">${t('lang')}</h3><div class="seg">${[["fr","Français"],["en","English"],["de","Deutsch"]].map(x => `<button class="btn lgb" data-l="${x[0]}" aria-pressed="${x[0] === lg}">${x[1]}</button>`).join('')}</div></section>
+  <section class="card"><h3 class="h">${t('notif')}</h3>${["Règle du jour","Rappels de cotisation et de prêt","News et votes","Anniversaires","Nouvelles photos dans l'album"].map((x, i) => `<label class="row"><span>${x}</span><input type="checkbox" ${i < 4 ? 'checked' : ''}></label>`).join('')}</section>
+  <section class="card"><h3 class="h">${t('roles')}</h3><div class="row"><span>${role}</span>${pause() ? P('en pause','warn') : P('actif','ok')}</div>${d.adj ? `<p class="sub">${d.adj}</p>` : ''}${B([t('pause')])}</section>
+  <button class="btn full danger">${t('out')}</button>`;
+}
+
+const S = {home, agenda, cycle, votes, more, membres, membre, notifs, finances, album, regles, docs, prof};
+const TABS = [["home","home"],["agenda","calendar"],["cycle","refresh"],["votes","checkbox"],["more","dots"]];
+
+function roleChips(container, onPick) {
+  container.innerHTML = GROUPS.map(([g, list]) => `<div class="group"><h2>${g}</h2><div class="chips">${list.map(n => `<button class="chip" data-r="${n}" aria-pressed="${n === role}">${n}</button>`).join('')}</div></div>`).join('');
+  container.querySelectorAll('.chip').forEach(b => b.onclick = () => onPick(b.dataset.r));
+}
+function note() { return `<strong>${role}</strong>${R[role].d}`; }
+
+function render() {
+  document.getElementById('hi').textContent = t('hi');
+  document.getElementById('badge').textContent = role;
+  document.documentElement.lang = lg;
+  document.getElementById('nav').innerHTML = TABS.map(x => `<button class="tab" data-t="${x[0]}" ${x[0] === tab && !sub() ? 'aria-current="page"' : ''}>${ic(x[1])}${t(x[0])}</button>`).join('');
+  document.querySelectorAll('.tab').forEach(e => e.onclick = () => { tab = e.dataset.t; stack = []; render(); });
+  const sc = document.getElementById('screen');
+  const keepScroll = arguments[0] === 'keep';
+  const prevScroll = sc.scrollTop;
+  sc.innerHTML = (sub() ? `<button class="back bk">${ic('arrow-left')} ${t('back')}</button>` : '') + S[sub() || tab]();
+  sc.scrollTop = keepScroll ? prevScroll : 0;
+  sc.querySelectorAll('.go').forEach(e => e.onclick = () => { stack.push(e.dataset.s); render(); });
+  sc.querySelectorAll('.bk').forEach(e => e.onclick = () => { stack.pop(); render(); });
+  sc.querySelectorAll('.lgb').forEach(e => e.onclick = () => { lg = e.dataset.l; render('keep'); });
+  sc.querySelectorAll('.fin').forEach(e => e.oninput = () => {
+    const v = parseFloat(e.value);
+    if (!Number.isNaN(v) && v >= 0) finDraft[e.dataset.k] = e.dataset.k === 'perMonth' ? Math.max(1, Math.round(v)) : v;
+    document.getElementById('finPreview').innerHTML = finPreview(finDraft);
+  });
+  sc.querySelectorAll('.fin-dep').forEach(e => e.onchange = () => { finDraft.depositMode = e.value; render('keep'); });
+  const fc = sc.querySelector('#fromCycle'); if (fc) fc.onchange = () => { finDraft.fromCycle = Number(fc.value); document.getElementById('finPreview').innerHTML = finPreview(finDraft); };
+  const fv = sc.querySelector('#finVote'); if (fv) fv.onchange = () => { finDraft.vote = fv.checked; render('keep'); };
+  const fs = sc.querySelector('#finSubmit'); if (fs) fs.onclick = () => { finProposed = {...finDraft}; render(); };
+  const fr = sc.querySelector('#finReset'); if (fr) fr.onclick = () => { finDraft = {...FIN_CURRENT, fromCycle:11, vote:true}; render('keep'); };
+  sc.querySelectorAll('.wish').forEach(e => e.onclick = () => { wishSent = true; render('keep'); });
+  const bb = document.getElementById('bellBadge'); if (bb) bb.style.display = notifRead ? 'none' : '';
+  sc.querySelectorAll('.mf').forEach(e => e.onclick = () => { memberFilter = e.dataset.f; render('keep'); });
+  sc.querySelectorAll('.mrow').forEach(e => e.onclick = () => { memberIdx = Number(e.dataset.i); stack.push('membre'); render(); });
+  const mq = sc.querySelector('#mq');
+  if (mq) mq.oninput = () => { memberQuery = mq.value; const pos = mq.selectionStart; render('keep'); const n = document.getElementById('mq'); n.focus(); n.setSelectionRange(pos, pos); };
+  roleChips(document.getElementById('roleGroups'), pick);
+  roleChips(document.getElementById('sheetGroups'), (r) => { pick(r); closeSheet(); });
+  document.getElementById('roleNote').innerHTML = note();
+  document.getElementById('sheetNote').innerHTML = note();
+}
+function pick(r) { role = r; render('keep'); }
+
+const sheet = document.getElementById('sheet');
+function openSheet() { sheet.classList.add('open'); document.getElementById('sheetClose').focus(); }
+function closeSheet() { sheet.classList.remove('open'); document.getElementById('roleBtn').focus(); }
+document.getElementById('roleBtn').onclick = openSheet;
+document.getElementById('sheetClose').onclick = closeSheet;
+sheet.onclick = (e) => { if (e.target === sheet) closeSheet(); };
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sheet.classList.contains('open')) closeSheet(); });
+document.getElementById('bellBtn').onclick = () => { stack = ['notifs']; render(); notifRead = true; document.getElementById('bellBadge').style.display = 'none'; document.getElementById('bellBtn').setAttribute('aria-label', 'Notifications'); };
+document.getElementById('avatar').onclick = () => { stack = ['prof']; render(); };
+document.getElementById('bellIc').innerHTML = ic('bell');
+document.getElementById('roleCaret').innerHTML = ic('users');
+document.getElementById('sheetClose').innerHTML = ic('x');
+
+render();
+</script>
+</body>
+</html>

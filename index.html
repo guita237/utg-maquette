@@ -148,7 +148,7 @@ button{cursor:pointer}
     <p>Maquette interactive. Choisis un rôle, puis navigue dans l'app pour voir ce que chaque membre du bureau pourra faire.</p>
     <div id="roleGroups"></div>
     <div class="role-note" id="roleNote" aria-live="polite"></div>
-    <p class="fine">Données d'exemple : montants, votes et dates d'anniversaire sont fictifs. Aucune donnée n'est enregistrée.</p>
+    <p class="fine">Maquette de démonstration : les noms, montants, votes et dates sont fictifs. Aucune donnée n'est enregistrée.</p>
   </aside>
 
   <div class="phone">
@@ -156,12 +156,12 @@ button{cursor:pointer}
       <header class="top">
         <div>
           <p class="assoc">United to Grow</p>
-          <p class="hi" id="hi">Salut Guita</p>
+          <p class="hi" id="hi">Salut Alex</p>
           <button class="rolebtn" id="roleBtn" aria-haspopup="dialog"><span id="badge">Membre</span><span id="roleCaret"></span></button>
         </div>
         <div class="top-actions">
           <button class="bellbtn" id="bellBtn" aria-label="Notifications, 2 non lues"><span id="bellIc"></span><span class="badge" id="bellBadge"></span></button>
-          <button class="avatar" id="avatar" aria-label="Ouvrir mon profil">GN</button>
+          <button class="avatar" id="avatar" aria-label="Ouvrir mon profil">AM</button>
         </div>
       </header>
       <main class="screen" id="screen"></main>
@@ -175,7 +175,7 @@ button{cursor:pointer}
     <h2 class="title"><span id="sheetTitle">Voir l'app en tant que</span><button class="btn" id="sheetClose" aria-label="Fermer"></button></h2>
     <div id="sheetGroups"></div>
     <div class="role-note" id="sheetNote"></div>
-    <p class="fine">Maquette interactive, données d'exemple.</p>
+    <p class="fine">Maquette de démonstration, noms et données fictifs.</p>
   </div>
 </div>
 
@@ -184,9 +184,9 @@ const ICONS = {"arrow-left": "<path d=\"M5 12l14 0\" /> <path d=\"M5 12l6 6\" />
 const ic = (n) => `<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n] || ''}</svg>`;
 
 const L = {
-  fr:{home:"Accueil",agenda:"Agenda",cycle:"Cycle",votes:"Votes",more:"Plus",hi:"Salut Guita",rule:"Règle du jour",ruleT:"Un retard non justifié de plus de 10 minutes coûte 5 €.",next:"Prochaines dates",news:"News",tools:"Mes outils",prof:"Profil",data:"Mes données",lang:"Langue de l'app",notif:"Notifications",roles:"Mes rôles et statut",save:"Enregistrer",pause:"Demander une pause au prochain cycle",out:"Se déconnecter",back:"Retour",contrib:"Cotisation",share:"Ma part",fines:"Amendes",voteNow:"Vote en cours",voteBtn:"Voter",bdayT:"C'est l'anniversaire de Natalia",bdayBtn:"Envoyer mes vœux",bdaySent:"Vœux envoyés",notifs:"Notifications"},
-  en:{home:"Home",agenda:"Calendar",cycle:"Cycle",votes:"Votes",more:"More",hi:"Hi Guita",rule:"Rule of the day",ruleT:"An unexcused delay of more than 10 minutes costs €5.",next:"Coming up",news:"News",tools:"My tools",prof:"Profile",data:"My details",lang:"App language",notif:"Notifications",roles:"My roles and status",save:"Save",pause:"Request a break next cycle",out:"Sign out",back:"Back",contrib:"Contribution",share:"My payout",fines:"Fines",voteNow:"Open vote",voteBtn:"Vote",bdayT:"It's Natalia's birthday",bdayBtn:"Send my wishes",bdaySent:"Wishes sent",notifs:"Notifications"},
-  de:{home:"Start",agenda:"Kalender",cycle:"Zyklus",votes:"Abstimmungen",more:"Mehr",hi:"Hallo Guita",rule:"Regel des Tages",ruleT:"Eine unentschuldigte Verspätung von mehr als 10 Minuten kostet 5 €.",next:"Nächste Termine",news:"Neuigkeiten",tools:"Meine Werkzeuge",prof:"Profil",data:"Meine Daten",lang:"App-Sprache",notif:"Benachrichtigungen",roles:"Meine Rollen und Status",save:"Speichern",pause:"Pause für den nächsten Zyklus beantragen",out:"Abmelden",back:"Zurück",contrib:"Beitrag",share:"Meine Auszahlung",fines:"Strafen",voteNow:"Laufende Abstimmung",voteBtn:"Abstimmen",bdayT:"Natalia hat heute Geburtstag",bdayBtn:"Glückwünsche senden",bdaySent:"Glückwünsche gesendet",notifs:"Benachrichtigungen"}
+  fr:{home:"Accueil",agenda:"Agenda",cycle:"Cycle",votes:"Votes",more:"Plus",hi:"Salut Alex",rule:"Règle du jour",ruleT:"Un retard non justifié de plus de 10 minutes coûte 5 €.",next:"Prochaines dates",news:"News",tools:"Mes outils",prof:"Profil",data:"Mes données",lang:"Langue de l'app",notif:"Notifications",roles:"Mes rôles et statut",save:"Enregistrer",pause:"Demander une pause au prochain cycle",out:"Se déconnecter",back:"Retour",contrib:"Cotisation",share:"Ma part",fines:"Amendes",voteNow:"Vote en cours",voteBtn:"Voter",bdayT:"C'est l'anniversaire de Carine",bdayBtn:"Envoyer mes vœux",bdaySent:"Vœux envoyés",notifs:"Notifications"},
+  en:{home:"Home",agenda:"Calendar",cycle:"Cycle",votes:"Votes",more:"More",hi:"Hi Alex",rule:"Rule of the day",ruleT:"An unexcused delay of more than 10 minutes costs €5.",next:"Coming up",news:"News",tools:"My tools",prof:"Profile",data:"My details",lang:"App language",notif:"Notifications",roles:"My roles and status",save:"Save",pause:"Request a break next cycle",out:"Sign out",back:"Back",contrib:"Contribution",share:"My payout",fines:"Fines",voteNow:"Open vote",voteBtn:"Vote",bdayT:"It's Carine's birthday",bdayBtn:"Send my wishes",bdaySent:"Wishes sent",notifs:"Notifications"},
+  de:{home:"Start",agenda:"Kalender",cycle:"Zyklus",votes:"Abstimmungen",more:"Mehr",hi:"Hallo Alex",rule:"Regel des Tages",ruleT:"Eine unentschuldigte Verspätung von mehr als 10 Minuten kostet 5 €.",next:"Nächste Termine",news:"Neuigkeiten",tools:"Meine Werkzeuge",prof:"Profil",data:"Meine Daten",lang:"App-Sprache",notif:"Benachrichtigungen",roles:"Meine Rollen und Status",save:"Speichern",pause:"Pause für den nächsten Zyklus beantragen",out:"Abmelden",back:"Zurück",contrib:"Beitrag",share:"Meine Auszahlung",fines:"Strafen",voteNow:"Laufende Abstimmung",voteBtn:"Abstimmen",bdayT:"Carine hat heute Geburtstag",bdayBtn:"Glückwünsche senden",bdaySent:"Glückwünsche gesendet",notifs:"Benachrichtigungen"}
 };
 let lg = "fr";
 const t = (k) => L[lg][k];
@@ -212,23 +212,23 @@ const R = {
   "Commissaire adjoint":{base:"Commissaire aux comptes",adj:"Peut cosigner si le commissaire est absent",d:"Remplace le commissaire aux comptes quand il est absent."},
   "Censeur":{d:"Fait l'appel aux réunions, applique le barème des amendes et tient le registre des sanctions.",r:[["Prochain appel","dimanche 27 sept."],["Amendes impayées","2, soit 15 €"],["Alerte","3 absences justifiées d'affilée"]],a:["Faire l'appel","Infliger une amende","Registre des sanctions","Ajouter à l'historique"],cfg:["Modifier le barème"]},
   "Censeur adjoint":{base:"Censeur",adj:"Fait l'appel en l'absence du censeur",d:"Remplace le censeur pendant les réunions."},
-  "Collecteur":{d:"Suit les cotisations jusqu'au 15 du mois et confirme les versements aux bénéficiaires.",r:[["Attendu pour le 15 sept.","770 €"],["Noms payés","9 sur 11"],["« J'ai payé » à vérifier","1"],["Bénéficiaires","Roger 2, Quiniva"]],a:["Marquer les paiements","Confirmer le versement"]},
+  "Collecteur":{d:"Suit les cotisations jusqu'au 15 du mois et confirme les versements aux bénéficiaires.",r:[["Attendu pour le 15 sept.","770 €"],["Noms payés","9 sur 11"],["« J'ai payé » à vérifier","1"],["Bénéficiaires","Boris 2, Laure"]],a:["Marquer les paiements","Confirmer le versement"]},
   "Chargé des activités":{d:"Organise les deux rencontres de l'année et cherche les logements.",r:[["Rencontre du printemps 2027","ville en vote"],["Logements proposés","3"],["Participants confirmés","8 sur 10"]],a:["Proposer un logement","Créer un événement"],cfg:["Demander le paiement"]},
   "Chargé des activités adjoint":{base:"Chargé des activités",adj:"Aide à la recherche de logements",d:"Aide à préparer les rencontres."},
-  "Communication":{d:"Publie le résumé des réunions, les annonces et les messages d'anniversaire.",r:[["Anniversaire du jour","Natalia"],["Prochain anniversaire","Shane, 22 sept."],["Résumé de réunion","à publier"]],a:["Écrire un mot pour Natalia","Publier un résumé","Envoyer une notification"]}
+  "Communication":{d:"Publie le résumé des réunions, les annonces et les messages d'anniversaire.",r:[["Anniversaire du jour","Carine"],["Prochain anniversaire","Kevin, 22 sept."],["Résumé de réunion","à publier"]],a:["Écrire un mot pour Carine","Publier un résumé","Envoyer une notification"]}
 };
 
 const MEMBERS = [
-  {n:"Dimitrie Feuakeng Tayon", s:"Dimitrie", roles:["Président"], names:2, since:"2021", phone:true},
-  {n:"Roger Bentcha", s:"Roger", roles:["Vice-président"], names:2, since:"2025", phone:true},
-  {n:"Hamilton Tsafack", s:"Hamilton", roles:["Secrétaire général"], names:2, since:"2021", phone:false},
-  {n:"Natalia Kapilima", s:"Natalia", roles:["Trésorière"], names:1, since:"2021", phone:true, bday:"15 septembre", today:true},
-  {n:"Shane Moyou", s:"Shane", roles:["Censeur"], names:2, since:"2025", phone:false, bday:"22 septembre"},
-  {n:"Guirauld Noumboussi Tayon", s:"Guita", roles:["Collecteur"], names:1, since:"2021", phone:true, me:true, bday:"8 décembre"},
-  {n:"Audrey Fortune", s:"Audrey", roles:["Communication"], names:1, since:"2021", phone:true},
-  {n:"Quiniva Ngwache", s:"Quiniva", roles:["Assistante trésorière"], names:1, since:"2021", phone:false},
-  {n:"Loïc Lamere", s:"Loïc", roles:["Secrétaire adjoint"], names:1, since:"2025", phone:true, bday:"2 octobre"},
-  {n:"Estelle Kevine", s:"Estelle", roles:[], names:2, since:"2024", phone:false, pause:true, bday:"14 mars"}
+  {n:"Marcel Ngono", s:"Marcel", roles:["Président"], names:2, since:"2021", phone:true},
+  {n:"Boris Tchami", s:"Boris", roles:["Vice-président"], names:2, since:"2025", phone:true},
+  {n:"Yannick Essomba", s:"Yannick", roles:["Secrétaire général"], names:2, since:"2021", phone:false},
+  {n:"Carine Mballa", s:"Carine", roles:["Trésorière"], names:1, since:"2021", phone:true, bday:"15 septembre", today:true},
+  {n:"Kevin Nana", s:"Kevin", roles:["Censeur"], names:2, since:"2025", phone:false, bday:"22 septembre"},
+  {n:"Alex Mbarga", s:"Alex", roles:["Collecteur"], names:1, since:"2021", phone:true, me:true, bday:"8 décembre"},
+  {n:"Sandrine Ekane", s:"Sandrine", roles:["Communication"], names:1, since:"2021", phone:true},
+  {n:"Laure Njoya", s:"Laure", roles:["Assistante trésorière"], names:1, since:"2021", phone:false},
+  {n:"Hervé Kamga", s:"Hervé", roles:["Secrétaire adjoint"], names:1, since:"2025", phone:true, bday:"2 octobre"},
+  {n:"Nadia Fotso", s:"Nadia", roles:[], names:2, since:"2024", phone:false, pause:true, bday:"14 mars"}
 ];
 const BUREAU = ["Président","Vice-président","Secrétaire général","Trésorière","Commissaire aux comptes","Censeur","Collecteur","Chargé des activités","Communication"];
 let wishSent = false, notifRead = false;
@@ -272,12 +272,12 @@ function home() {
     <p style="margin:2px 0 0;font-size:14px">Ville de la rencontre du printemps 2027</p>${B([t('voteBtn')], true)}</section>
   <section class="card"><h3 class="h">${t('next')}</h3>
     <div class="row"><span>${ic('brand-discord')} Réunion ordinaire</span><span class="sub">dim. 27 sept.</span></div>
-    <div class="row"><span>${ic('cake')} Anniversaire de Shane</span><span class="sub">22 sept.</span></div>
-    <div class="row"><span>${ic('cake')} Anniversaire de Loïc</span><span class="sub">2 oct.</span></div>
-    <div class="row"><span>${ic('coin')} Cotisation pour Audrey</span><span class="sub">15 oct.</span></div>
+    <div class="row"><span>${ic('cake')} Anniversaire de Kevin</span><span class="sub">22 sept.</span></div>
+    <div class="row"><span>${ic('cake')} Anniversaire de Hervé</span><span class="sub">2 oct.</span></div>
+    <div class="row"><span>${ic('coin')} Cotisation pour Sandrine</span><span class="sub">15 oct.</span></div>
     <div class="row"><span>${ic('map-pin')} Rencontre du printemps</span><span class="sub">mars 2027</span></div></section>
   <section class="card"><h3 class="h">${t('news')}</h3>
-    <div class="row"><span>${ic('confetti')} Joyeux anniversaire Natalia !</span>${P('Anniversaire','warn')}</div>
+    <div class="row"><span>${ic('confetti')} Joyeux anniversaire Carine !</span>${P('Anniversaire','warn')}</div>
     <div class="row"><span>Règlement intérieur révisé : 4 articles modifiés</span>${P('Annonce','ok')}</div>
     <div class="row"><span>Résumé de la réunion d'août</span>${P('Rapport','mute')}</div></section>` + tools();
 }
@@ -291,10 +291,10 @@ function agenda() {
   const canPlan = has("Président","Vice-président","Secrétaire général","Secrétaire adjoint","Chargé des activités","Chargé des activités adjoint");
   return `<section class="card"><div class="row" style="padding-top:0"><button class="btn" aria-label="Mois précédent">${ic('chevron-left')}</button><h3 class="h" style="margin:0">Septembre 2026</h3><button class="btn" aria-label="Mois suivant">${ic('chevron-right')}</button></div><div class="cal">${g}</div></section>
   <section class="card">
-    <div class="row"><span><b>15 sept.</b> Cotisation du cycle 10<br><span class="sub">Bénéficiaires : Roger 2 et Quiniva</span></span>${P('aujourd\u2019hui','ok')}</div>
-    <div class="row"><span><b>15 sept.</b> Anniversaire de Natalia</span>${ic('cake')}</div>
+    <div class="row"><span><b>15 sept.</b> Cotisation du cycle 10<br><span class="sub">Bénéficiaires : Boris 2 et Laure</span></span>${P('aujourd\u2019hui','ok')}</div>
+    <div class="row"><span><b>15 sept.</b> Anniversaire de Carine</span>${ic('cake')}</div>
     <div class="row"><span><b>20 sept.</b> Fin du vote<br><span class="sub">Ville de la rencontre 2027</span></span>${P('vote','warn')}</div>
-    <div class="row"><span><b>22 sept.</b> Anniversaire de Shane</span>${ic('cake')}</div>
+    <div class="row"><span><b>22 sept.</b> Anniversaire de Kevin</span>${ic('cake')}</div>
     <div class="row"><span><b>27 sept., 18 h</b> Réunion ordinaire<br><span class="sub">Sur Discord, avec le vote du cycle 11</span></span>${P('réunion','mute')}</div>
     <div class="btns"><button class="btn primary">Je serai là</button><button class="btn">Absence justifiée</button></div>
     <div class="row"><span><b>15 oct.</b> Remboursement d'un prêt<br><span class="sub">Ensuite 0,50 € par jour de retard</span></span>${P('prêt','bad')}</div>
@@ -306,25 +306,25 @@ function agenda() {
 
 function cycle() {
   const m = [
-    ["avr.", "Loïc, Dimitrie 2", 1, "385 € chacun"],
-    ["mai", "Hamilton 1, Dimitrie 1", 1, "385 € chacun"],
-    ["juin", "Shane 2, Roger 1", 1, "385 € chacun"],
-    ["juil.", "Natalia, Hamilton 2", 1, "385 € chacun"],
-    ["août", "Shane 1, Guirauld", 1, "385 € chacun"],
-    ["sept.", "Roger 2, Quiniva", 2, "385 € chacun"],
-    ["oct.", "Audrey", 0, "420 €"]
+    ["avr.", "Hervé, Marcel 2", 1, "385 € chacun"],
+    ["mai", "Yannick 1, Marcel 1", 1, "385 € chacun"],
+    ["juin", "Kevin 2, Boris 1", 1, "385 € chacun"],
+    ["juil.", "Carine, Yannick 2", 1, "385 € chacun"],
+    ["août", "Kevin 1, Alex", 1, "385 € chacun"],
+    ["sept.", "Boris 2, Laure", 2, "385 € chacun"],
+    ["oct.", "Sandrine", 0, "420 €"]
   ];
   const next = isSec()
     ? `<section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">Cycle 11</h3>${P('brouillon','warn')}</div>
         <div class="step">${ic('circle-check')} Montant et date : ${eur((finProposed && finProposed.adopted) ? finProposed.amount : FIN_CURRENT.amount)} par nom, début le 15 nov. 2026</div>
-        <div class="step">${ic('circle-check')} Participants : 10 membres, 15 noms, Estelle revient</div>
+        <div class="step">${ic('circle-check')} Participants : 10 membres, 15 noms, Nadia revient</div>
         <div class="step">${ic('circle-check')} Ordre de passage : 1 tirage au sort</div>
         <div class="step" style="color:var(--green-dark)">${ic('point')} Vote à la réunion du 27 septembre</div>
         ${B(['Soumettre au vote','Voir l\u2019aperçu'], true)}</section>`
     : `<section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">Cycle 11</h3>${P('vote le 27 sept.','warn')}</div>
         <p class="sub">Le secrétariat a préparé l'ordre de passage. Il sera validé par vote à la prochaine réunion.</p>${B(['Voir l\u2019ordre proposé'])}</section>`;
   return `<section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0;font-size:18px">Cycle 10</h3>${P('35 € par nom','ok')}</div>
-    <p class="sub">Depuis le 15 avril 2026, 7 mois, 13 noms actifs. Les deux noms d\u2019Estelle sont en pause.</p>
+    <p class="sub">Depuis le 15 avril 2026, 7 mois, 13 noms actifs. Les deux noms de Nadia sont en pause.</p>
     ${m.map(x => `<div class="row"><span><span class="sub" style="display:inline-block;width:38px">${x[0]}</span>${x[1]}<br><span class="sub" style="margin-left:38px">${x[3]}</span></span>${x[2] == 1 ? P('versé','ok') : x[2] == 2 ? P('en cours','warn') : P('à venir','mute')}</div>`).join('')}
     ${has('Collecteur') ? B(['Marquer les paiements'], true) : ''}</section>
   ${next}
@@ -374,7 +374,7 @@ function membres() {
   return `<h3 class="h" style="font-size:18px">Membres et rôles</h3>
   <p class="sub" style="margin-bottom:8px">10 membres, dont 9 actifs et 1 en pause</p>
   <label class="field" for="mq" style="margin-top:0">Rechercher un membre ou un rôle</label>
-  <input class="input" id="mq" value="${memberQuery}" placeholder="Ex. trésorière, Shane" autocomplete="off">
+  <input class="input" id="mq" value="${memberQuery}" placeholder="Ex. trésorière, Kevin" autocomplete="off">
   <div class="seg" style="margin:8px 0 10px">${filters.map(f => `<button class="btn mf" data-f="${f}" aria-pressed="${f === memberFilter}">${f}</button>`).join('')}</div>
   <section class="card" id="mlist">${list.length ? list.map(m => `<button class="row mrow" data-i="${m.i}" style="width:100%;background:none;border-left:0;border-right:0;border-bottom:0;text-align:left;padding:10px 0">
       <span style="display:flex;align-items:center;gap:10px;min-width:0">
@@ -403,7 +403,7 @@ function membre() {
   <section class="card"><h3 class="h">Cycle 10</h3>
     <div class="row"><span>Noms dans le cycle</span><span class="strong">${m.pause ? m.names + ', en pause' : m.names}</span></div>
     <div class="row"><span>Caution au compte de base</span><span class="strong">${eur(m.names * deposit(FIN_CURRENT))}</span></div>
-    <div class="row"><span>Montant reçu par nom</span><span class="strong">${m.pause ? 'aucun ce cycle' : (m.s === 'Audrey' ? '420 €' : '385 €')}</span></div></section>
+    <div class="row"><span>Montant reçu par nom</span><span class="strong">${m.pause ? 'aucun ce cycle' : (m.s === 'Sandrine' ? '420 €' : '385 €')}</span></div></section>
   <section class="card"><h3 class="h">Contact</h3>
     ${showContact ? `<div class="btns"><button class="btn primary">${ic('brand-whatsapp')} WhatsApp</button><button class="btn">${ic('phone')} Appeler</button><button class="btn">${ic('mail')} E-mail</button></div>`
       : `<p class="sub">${m.s} a choisi de ne montrer ses coordonnées qu'au bureau.</p>`}
@@ -464,11 +464,11 @@ function finances() {
 
 function notifs() {
   const n = [
-    [1,'cake','var(--sun-soft)','var(--sun-ink)',"C'est l'anniversaire de Natalia","Envoie-lui tes vœux dans l'app.","8:00"],
-    [1,'bell-ringing','var(--green-soft)','var(--green-dark)',"Cotisation du 15 septembre","Bénéficiaires : Roger 2 et Quiniva.","7:30"],
+    [1,'cake','var(--sun-soft)','var(--sun-ink)',"C'est l'anniversaire de Carine","Envoie-lui tes vœux dans l'app.","8:00"],
+    [1,'bell-ringing','var(--green-soft)','var(--green-dark)',"Cotisation du 15 septembre","Bénéficiaires : Boris 2 et Laure.","7:30"],
     [0,'checkbox','var(--green-soft)','var(--green-dark)',"Vote bientôt clos","Ville de la rencontre 2027, jusqu'au 20 septembre.","hier"],
     [0,'file-text','#edf0ee','var(--muted)',"Nouveau rapport","Résumé de la réunion d'août.","12 sept."],
-    [0,'cake','var(--sun-soft)','var(--sun-ink)',"Anniversaire de Shane dans une semaine","Le 22 septembre.","15 sept."]
+    [0,'cake','var(--sun-soft)','var(--sun-ink)',"Anniversaire de Kevin dans une semaine","Le 22 septembre.","15 sept."]
   ];
   return `<h3 class="h" style="font-size:18px">${t('notifs')}</h3>
   <section class="card">${n.map(x => `<div class="notif${x[0] && !notifRead ? ' unread' : ''}"><span class="ico" style="background:${x[2]};color:${x[3]}">${ic(x[1])}</span><span style="flex:1"><b>${x[4]}</b><br><span class="sub">${x[5]}</span></span><span class="sub">${x[6]}</span></div>`).join('')}</section>
@@ -476,15 +476,15 @@ function notifs() {
 }
 
 function album() {
-  const a = [["Rodgau","mars 2026, 96 médias"],["Neuilly-sur-Marne","mai 2025, 63 médias"],["Weinheim","oct. 2024, 31 médias"],["Stuttgart","mars 2024, 43 médias"]];
+  const a = [["Cassel","mars 2026, 96 médias"],["Lyon","mai 2025, 63 médias"],["Fribourg","oct. 2024, 31 médias"],["Leipzig","mars 2024, 43 médias"]];
   const ed = has('Secrétaire général','Secrétaire adjoint','Censeur','Censeur adjoint');
   return `<div class="row" style="border:0;padding-top:0"><h3 class="h" style="margin:0">Albums des rencontres</h3><button class="btn primary">${ic('upload')} Ajouter</button></div>
   <div class="grid2" style="margin-bottom:12px">${a.map(x => `<div class="card" style="margin:0;padding:8px"><div class="thumb">${ic('photo')}</div><p style="margin:6px 0 0;font-size:14px;font-weight:700">${x[0]}</p><p class="sub">${x[1]}</p></div>`).join('')}</div>
   <section class="card"><div class="row" style="padding-top:0"><h3 class="h" style="margin:0">Historique</h3>${ed ? '<button class="btn">Ajouter une entrée</button>' : P('lecture seule','mute')}</div>
-    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:76px">15.03.2026</span><span>Cycle 10 : Estelle se met en pause</span></div>
-    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:76px">12.03.2026</span><span>Rencontre à Rodgau</span></div>
-    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:76px">24.08.2025</span><span>Cycle 9 : Roger nous rejoint</span></div>
-    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:76px">06.01.2025</span><span>Cotisation à 35 €, Shane et Loïc nous rejoignent</span></div></section>`;
+    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:76px">15.03.2026</span><span>Cycle 10 : Nadia se met en pause</span></div>
+    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:76px">12.03.2026</span><span>Rencontre à Cassel</span></div>
+    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:76px">24.08.2025</span><span>Cycle 9 : Boris nous rejoint</span></div>
+    <div class="row" style="justify-content:flex-start"><span class="sub" style="min-width:76px">06.01.2025</span><span>Cotisation à 35 €, Kevin et Hervé nous rejoignent</span></div></section>`;
 }
 
 function regles() {
@@ -517,9 +517,9 @@ function docs() {
 
 function prof() {
   const d = R[role];
-  return `<div style="text-align:center;margin-bottom:10px"><div class="avatar" style="width:64px;height:64px;font-size:20px;display:grid;place-items:center;margin:0 auto">GN</div><button class="back" style="margin:4px auto 0">${ic('camera')} Changer la photo</button></div>
+  return `<div style="text-align:center;margin-bottom:10px"><div class="avatar" style="width:64px;height:64px;font-size:20px;display:grid;place-items:center;margin:0 auto">AM</div><button class="back" style="margin:4px auto 0">${ic('camera')} Changer la photo</button></div>
   <section class="card"><h3 class="h">${t('data')}</h3>
-    ${[["Nom","Guirauld Noumboussi Tayon"],["E-mail","guita@exemple.de"],["Téléphone","+49 ··· ··· 237"],["Ville","Bremen"]].map((x, i) => `<label class="field" for="f${i}">${x[0]}</label><input class="input" id="f${i}" value="${x[1]}">`).join('')}
+    ${[["Nom","Alex Mbarga"],["E-mail","alex@exemple.com"],["Téléphone","+49 ··· ··· 237"],["Ville","Leipzig"]].map((x, i) => `<label class="field" for="f${i}">${x[0]}</label><input class="input" id="f${i}" value="${x[1]}">`).join('')}
     ${B([t('save')], true)}</section>
   <section class="card"><h3 class="h">${ic('cake')} Anniversaire</h3>
     <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:8px">
